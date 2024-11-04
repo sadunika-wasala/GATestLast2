@@ -627,6 +627,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </body>
 <script>
     window.myGlobalVariable = "Hello from parent page";
+
+    // Listen for messages from the iframe
+window.addEventListener("message", (event) => {
+  if (event.origin !== "https://gyde365-qualify-1bt-bc-ga.azurewebsites.net") return; // Check origin for security
+  if (event.data === "requestGlobalVariable") {
+    event.source.postMessage(myGlobalVariable, event.origin);
+  }
+});
+    
 </script>
      
 
