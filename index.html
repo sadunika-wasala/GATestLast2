@@ -251,13 +251,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5NBJF9HC');</script>
 <!-- End Google Tag Manager -->
-
-        const nextButton = document.getElementById('mySpanElementForContainerNextButtonId');
-
-if (nextButton) {
-    nextButton.addEventListener('click', function() {
-        window.parent.postMessage('nextButton-click', '*');
+<script>
+        $(document).ready(function(){
+    $("iframe").on("load", function(){
+        $(this).contents().on("mousedown, mouseup, click", function(){
+            alert("Click detected inside iframe.");
+        });
     });
+});
+</script>
 }
     </head>
     <body class="page-template-default page page-id-9318 wp-custom-logo elementor-default elementor-kit-5 elementor-page elementor-page-9318">
