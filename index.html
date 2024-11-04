@@ -629,19 +629,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
 
 // Define the global variable
-window.myGlobalVariable = "initialValue";
+//window.myGlobalVariable = "initialValue";
+
+// Listen for messages from the iframe
+// window.addEventListener("message", (event) => {
+//     // Verify the origin to ensure the message is from the expected source
+//     if (event.origin === "https://gyde365-qualify-1bt-bc-ga.azurewebsites.net") {
+//         // Check if the message contains the correct action
+//         if (event.data.action === "updateGlobalVariable") {
+//             window.myGlobalVariable = event.data.value; // Update the global variable
+//             console.log("Global variable updated to:", window.myGlobalVariable);
+//         }
+//     }
+// }, false);
+
+    // Define the global variables
+window.myGlobalVariable1 = "initialValue1";
+window.myGlobalVariable2 = "initialValue2";
 
 // Listen for messages from the iframe
 window.addEventListener("message", (event) => {
     // Verify the origin to ensure the message is from the expected source
     if (event.origin === "https://gyde365-qualify-1bt-bc-ga.azurewebsites.net") {
+        
         // Check if the message contains the correct action
-        if (event.data.action === "updateGlobalVariable") {
-            window.myGlobalVariable = event.data.value; // Update the global variable
-            console.log("Global variable updated to:", window.myGlobalVariable);
+        if (event.data.action === "updateGlobalVariable1") {
+            // Update the first global variable
+            window.myGlobalVariable1 = event.data.value; 
+            console.log("Global variable 1 updated to:", window.myGlobalVariable1);
+        } else if (event.data.action === "updateGlobalVariable2") {
+            // Update the second global variable
+            window.myGlobalVariable2 = event.data.value; 
+            console.log("Global variable 2 updated to:", window.myGlobalVariable2);
         }
     }
 }, false);
+
 
     
     
