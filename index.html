@@ -251,15 +251,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5NBJF9HC');</script>
 <!-- End Google Tag Manager -->
-<script>
-        $(document).ready(function(){
-    $("iframe").on("load", function(){
-        $(this).contents().on("mousedown, mouseup, click", function(){
-            alert("Click detected inside iframe.");
-        });
-    });
-});
-</script>
+
 }
     </head>
     <body class="page-template-default page page-id-9318 wp-custom-logo elementor-default elementor-kit-5 elementor-page elementor-page-9318">
@@ -630,9 +622,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-
+       
 
     </body>
+
+     <script>
+        $(document).ready(function(){
+    $("iframe").on("load", function(){
+        $(this).contents().on("mousedown, mouseup, click", function(){
+            alert("Click detected inside iframe.");
+        });
+    });
+});
+</script>
 
 </html>
 <!-- Page optimized by LiteSpeed Cache @2024-10-31 04:27:24 -->
