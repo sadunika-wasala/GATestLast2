@@ -638,25 +638,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </body>
 <script>
-    
 
-// Define the global variable
-//window.myGlobalVariable = "initialValue";
+// // Define the global variables
+// window.myGlobalVariable1 = "initialValue1";
+// window.myGlobalVariable2 = "initialValue2";
 
-// Listen for messages from the iframe
+// // Listen for messages from the iframe
 // window.addEventListener("message", (event) => {
 //     // Verify the origin to ensure the message is from the expected source
 //     if (event.origin === "https://gyde365-qualify-1bt-bc-ga.azurewebsites.net") {
+        
 //         // Check if the message contains the correct action
-//         if (event.data.action === "updateGlobalVariable") {
-//             window.myGlobalVariable = event.data.value; // Update the global variable
-//             console.log("Global variable updated to:", window.myGlobalVariable);
+//         if (event.data.action === "updateGlobalVariable1") {
+//             // Update the first global variable
+//             window.myGlobalVariable1 = event.data.value; 
+//             console.log("Global variable 1 updated to:", window.myGlobalVariable1);
+//         } else if (event.data.action === "updateGlobalVariable2") {
+//             // Update the second global variable
+//             window.myGlobalVariable2 = event.data.value; 
+//             console.log("Global variable 2 updated to:", window.myGlobalVariable2);
 //         }
 //     }
 // }, false);
 
-    // Define the global variables
-window.myGlobalVariable1 = "initialValue1";
+    window.myGlobalVariable1 = "initialValue1";
 window.myGlobalVariable2 = "initialValue2";
 
 // Listen for messages from the iframe
@@ -669,14 +674,25 @@ window.addEventListener("message", (event) => {
             // Update the first global variable
             window.myGlobalVariable1 = event.data.value; 
             console.log("Global variable 1 updated to:", window.myGlobalVariable1);
+            
+            // Dispatch a custom event for updating globalVariable1
+            const customEvent1 = new CustomEvent("globalVariable1Updated", {
+                detail: { newValue: window.myGlobalVariable1 }
+            });
+            window.dispatchEvent(customEvent1);
         } else if (event.data.action === "updateGlobalVariable2") {
             // Update the second global variable
             window.myGlobalVariable2 = event.data.value; 
             console.log("Global variable 2 updated to:", window.myGlobalVariable2);
+            
+            // Dispatch a custom event for updating globalVariable2
+            const customEvent2 = new CustomEvent("globalVariable2Updated", {
+                detail: { newValue: window.myGlobalVariable2 }
+            });
+            window.dispatchEvent(customEvent2);
         }
     }
 }, false);
-
 
     
     
