@@ -661,7 +661,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 //     }
 // }, false);
 
-    window.myGlobalVariable1 = "initialValue1";
+window.myGlobalVariable1 = "initialValue1";
 window.myGlobalVariable2 = "initialValue2";
 
 // Listen for messages from the iframe
@@ -694,8 +694,22 @@ window.addEventListener("message", (event) => {
     }
 }, false);
 
-    
-    
+// Listen for custom events and push to dataLayer
+window.addEventListener("globalVariable1Updated", function(event) {
+    dataLayer.push({
+        event: "iframeClick",
+        action: "globalVariable1 updated",
+        value: event.detail.newValue
+    });
+});
+
+window.addEventListener("globalVariable2Updated", function(event) {
+    dataLayer.push({
+        event: "iframeClick",
+        action: "globalVariable2 updated",
+        value: event.detail.newValue
+    });
+});
 </script>
      
 
